@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Card, Dropdown, Menu, Table, Tag } from 'antd';
+import { Card, Dropdown, Menu, Space, Table, Tag,Button } from 'antd';
 import { MoreOutlined, BookOutlined, FileDoneOutlined, EditOutlined, UsergroupAddOutlined, ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
 import { motion } from 'framer-motion';
+
 
 const UserManagement = () => {
   
@@ -9,18 +10,45 @@ const UserManagement = () => {
 
   const columns = [
     {
-      title: <input type="checkbox" />, 
-      dataIndex: 'checkbox',
-      key: 'checkbox',
-      render: () => <input type="checkbox" />
+      title: <input type="checkbox" />,
+      dataIndex: "checkbox",
+      key: "checkbox",
+      render: () => <input type="checkbox" />,
     },
-    { title: 'Fullname', dataIndex: 'Fullname', key: 'Fullname' },
-    { title: 'Username', dataIndex: 'Username', key: 'Username' },
-    { title: 'Email', dataIndex: 'Email', key: 'Email' },
-    { title: 'Status', dataIndex: 'status', key: 'status', render: status => <Tag color={status === 'online' ? 'green' : status === 'offline' ? 'blue' : 'blue'}>{status}</Tag> },
-//     { title: 'course_title', dataIndex: 'course_title', key: 'course_title' },
-//     { title: 'course_status', dataIndex: 'course_status', key: 'course_status', render: course_status => <Tag color={course_status === 'ended' ? 'green' : course_status === 'pending' ? 'red' : 'blue'}>{course_status}</Tag> },
+    { title: "Fullname", dataIndex: "Fullname", key: "Fullname" },
+    { title: "Username", dataIndex: "Username", key: "Username" },
+    { title: "Email", dataIndex: "Email", key: "Email" },
+    {
+      title: "Payment Status",
+      dataIndex: "paymentStatus",
+      key: "paymentStatus",
+      render: (paymentStatus) => {
+        let answ = "paid";
+        if (paymentStatus === "never paid") {
+          answ = "never paid";
+        } else if (paymentStatus === "expired subscription") {
+          answ = "expired subscription";
+        }
+        return <Tag>{answ}</Tag>;
+      },
+    },    
+    {
+      title: "Actions",
+      key: "actions",
+      render: (_, record) => (
+        <Space size="middle">
+          <Button type="default" onClick={() => handleSuspend(record.key)}>
+            Suspend
+          </Button>
+          <Button type="primary" danger onClick={() => handleDelete(record.key)}>
+            Delete
+          </Button>
+        </Space>
+      ),
+    },
   ];
+  
+  
 
   const data = [
     { key: '1', Fullname: 'Dalton', Username: 'DALTON',Email: 'user@personal.com',status: 'online',  },

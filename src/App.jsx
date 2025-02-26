@@ -28,6 +28,9 @@ import Admin from './components/super-tables/Super_profile';
 import QuizesManagement from './components/super-tables/quizes-management';
 import ReportManagement from './components/super-tables/reports';
 import UserManagement from './components/super-tables/user-management';
+import NotificationPage from './components/notifications.jsx';
+import Register from './components/Register.jsx';
+
 
 
 const App = () => {
@@ -136,6 +139,20 @@ function SuperCourse() {
   );
 }
 
+// notifications
+
+function Notifications(){
+  return(
+    <div className="flex h-screen w-full justify-between">
+      <div className="w-64 bg-gray-800 text-white">
+        <Sidebar userRole={userRole} />
+      </div>
+      <div className="flex-1 px-2 bg-gray-100">
+        <NotificationPage />
+      </div>
+    </div>
+  )
+}
 
 function SuperMentor() {
   return (
@@ -214,6 +231,7 @@ function SuperMentor() {
             </>
           }
         />
+         <Route path="/Register" element={<Register />} />
         <Route path="/home" element={<ProtectedRoute allowedRoles={["sub-admin","super-admin"]}><Home /></ProtectedRoute>} />
         <Route path="/courses" element={<ProtectedRoute allowedRoles={["sub-admin","super-admin"]}><Course/></ProtectedRoute>} />
         <Route path="/test" element={<ProtectedRoute allowedRoles={["sub-admin","super-admin"]}><Test /></ProtectedRoute>} />
@@ -221,11 +239,12 @@ function SuperMentor() {
         <Route path="/course-access-overview" element={<ProtectedRoute allowedRoles={["sub-admin","super-admin"]}><CommentOverView /></ProtectedRoute>} />
         <Route path="/comment-overview" element={<ProtectedRoute allowedRoles={["sub-admin","super-admin"]}><CommentAccess /></ProtectedRoute>} />
         <Route path="/unauthorized" element={<div className="text-center text-red-500 mt-10">Unauthorized Access</div>} />
-
+        <Route path="/notifications" element={<ProtectedRoute allowedRoles={["sub-admin","super-admin"]}><Notifications /></ProtectedRoute>} />
 
 
 
         {/*routes for super admin side menus  */}
+        <Route path="/notifications" element={<ProtectedRoute allowedRoles={["sub-admin","super-admin"]}><Notifications /></ProtectedRoute>} />
         <Route path="/courses_management" element={<ProtectedRoute allowedRoles={["sub-admin","super-admin"]}><SuperCourse/></ProtectedRoute>} />
         <Route path="/mentor_management" element={<ProtectedRoute allowedRoles={["sub-admin","super-admin"]}><SuperMentor /></ProtectedRoute>} />
         <Route path="/super_profile" element={<ProtectedRoute allowedRoles={["sub-admin","super-admin"]}><SuperProfile/></ProtectedRoute>} />

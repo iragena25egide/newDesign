@@ -72,8 +72,8 @@ const Profile = () => {
         {activeTab === 'settings' && (
           <div className="p-8">
             <h2 className="text-2xl font-semibold mb-4 text-gray-500">Platform <span style={{ color: '#1890ff' }}> Settings</span></h2>
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold text-blue-500">ACCOUNT</h3>
+            <div className="mb-2">
+              {/* <h3 className="text-lg font-semibold text-blue-500">ACCOUNT</h3>
               <div className="flex items-center justify-between my-2">
                 <span className="text-gray-500">Email me when someone follows me</span>
                 <Switch checked={settings.follows} onChange={() => toggleSetting('follows')} />
@@ -85,14 +85,14 @@ const Profile = () => {
               <div className="flex items-center justify-between my-2">
                 <span className="text-gray-500">Email me when someone mentions me</span>
                 <Switch checked={settings.mentions} onChange={() => toggleSetting('mentions')} />
-              </div>
+              </div> */}
             </div>
             <div>
               <h3 className="text-lg font-semibold text-blue-500">APPLICATION</h3>
-              <div className="flex items-center justify-between my-2">
+              {/* <div className="flex items-center justify-between my-2">
                 <span className="text-gray-500">Notify me when sameone visit my app</span>
                 <Switch checked={settings.launches} onChange={() => toggleSetting('launches')} />
-              </div>
+              </div> */}
               <div className="flex items-center justify-between my-2">
                 <span className="text-gray-500">Notify me when sameone makes signup</span>
                 <Switch checked={settings.updates} onChange={() => toggleSetting('updates')} />

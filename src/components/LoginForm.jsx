@@ -108,7 +108,7 @@ const LoginForm = ({ onSwitch, setUserRole }) => {
         <Text>
           Don’t have an account?{' '}
           <span style={{ color: '#1890ff', cursor: 'pointer' }}>
-            Register Now
+            <Link to={"/Register"}>Register Now</Link>
           </span>
         </Text>
       </Form>

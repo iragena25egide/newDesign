@@ -1,8 +1,10 @@
 import React from 'react';
 import { Form, Input, Button, Card, Typography, Select, message } from 'antd';
+import { Link } from 'react-router-dom';
 
 const { Text } = Typography;
 const { Option } = Select;
+
 
 const Register = ({ onSwitch }) => {
   const [form] = Form.useForm();
@@ -80,7 +82,7 @@ const Register = ({ onSwitch }) => {
         <Text>
           Already have an account?{' '}
           <span style={{ color: '#1890ff', cursor: 'pointer' }} onClick={onSwitch}>
-            Sign In
+           <Link to={"/signin"}>Sign In</Link> 
           </span>
         </Text>
       </Form>
